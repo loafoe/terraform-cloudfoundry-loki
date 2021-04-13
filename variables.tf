@@ -46,10 +46,10 @@ variable "s3_credentials" {
     bucket     = string
   })
   default = {
-    access_key        = ""
-    secret_access_key = ""
-    endpoint          = ""
-    bucket            = ""
+    access_key = ""
+    secret_key = ""
+    endpoint   = ""
+    bucket     = ""
   }
 }
 
