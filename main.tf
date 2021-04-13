@@ -24,7 +24,15 @@ resource "cloudfoundry_app" "loki" {
   memory       = var.memory
   disk_quota   = var.disk
   docker_image = var.loki_image
-  environment = merge({}, var.environment)
+  environment = merge({
+    LOKI_YAML_BASE64 = base64encode(templatefile("${path.module}/templates/loki.yaml", {
+      s3_access_key        = var.s3_credentials.s3_access_key
+      s3_secret_access_key = var.s3_credentials.s3_secret_access_key
+      s3_endpoint          = var.s3_credentials.s3_endpoint
+      s3_bucket            = var.s3_credentials.s3_bucket
+    }))
+  }, var.environment)
+  command = "/loki/run.sh"
 
   routes {
     route = cloudfoundry_route.loki.id
@@ -41,8 +49,8 @@ resource "cloudfoundry_route" "loki" {
 }
 
 resource "cloudfoundry_route" "loki_internal" {
-  domain = data.cloudfoundry_domain.internal.id
-  space = data.cloudfoundry_space.space.id
+  domain   = data.cloudfoundry_domain.internal.id
+  space    = data.cloudfoundry_space.space.id
   hostname = var.name_postfix == "" ? "loki" : "loki-${var.name_postfix}"
 }
 

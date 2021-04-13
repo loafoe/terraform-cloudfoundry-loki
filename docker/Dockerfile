@@ -1,3 +1,4 @@
 FROM grafana/loki:latest
-COPY loki.yaml /etc/loki.yaml
+COPY run.sh /loki
+RUN chmod +x /loki/run.sh
 EXPOSE 3100

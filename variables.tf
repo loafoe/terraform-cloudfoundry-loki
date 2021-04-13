@@ -18,7 +18,7 @@ variable "cf_domain" {
 variable "name_postfix" {
   type        = string
   description = "The postfix string to append to the hostname, prevents namespace clashes"
-  default = ""
+  default     = ""
 }
 variable "environment" {
   type        = map(any)
@@ -29,15 +29,29 @@ variable "environment" {
 variable "s3_broker_settings" {
   type = object({
     service_broker = string
-    service_plan = string
+    service_plan   = string
   })
   default = {
     service_broker = "hsdp-s3"
-    service_plan = "s3_bucket"
+    service_plan   = "s3_bucket"
   }
   description = "The S3 service broker to use"
 }
 
+variable "s3_credentials" {
+  type = object({
+    s3_access_key        = string
+    s3_secret_access_key = string
+    s3_endpoint          = string
+    s3_bucket            = string
+  })
+  default = {
+    s3_access_key        = ""
+    s3_secret_access_key = ""
+    s3_endpoint          = ""
+    s3_bucket            = ""
+  }
+}
 
 variable "network_policies" {
   description = "The container-to-container network policies to create with Grafana as the source app"
