@@ -11,9 +11,9 @@ variable "cf_space" {
   type        = string
   description = "The CF Space to deploy in"
 }
-variable "cf_domain" {
+variable "cf_region" {
   type        = string
-  description = "The CF domain to use for Grafana"
+  description = "The CF region to use for Grafana Loki"
 }
 variable "name_postfix" {
   type        = string
@@ -40,16 +40,16 @@ variable "s3_broker_settings" {
 
 variable "s3_credentials" {
   type = object({
-    s3_access_key        = string
-    s3_secret_access_key = string
-    s3_endpoint          = string
-    s3_bucket            = string
+    access_key = string
+    secret_key = string
+    endpoint   = string
+    bucket     = string
   })
   default = {
-    s3_access_key        = ""
-    s3_secret_access_key = ""
-    s3_endpoint          = ""
-    s3_bucket            = ""
+    access_key        = ""
+    secret_access_key = ""
+    endpoint          = ""
+    bucket            = ""
   }
 }
 

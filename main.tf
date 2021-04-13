@@ -6,16 +6,21 @@ data "cloudfoundry_space" "space" {
   name = var.cf_space
 }
 
+data "cloudfoundry_domain" "domain" {
+  name = data.hsdp_config.cf.domain
+}
+
 data "cloudfoundry_service" "s3" {
   name = var.s3_broker_settings.service_broker
 }
 
-data "cloudfoundry_domain" "domain" {
-  name = var.cf_domain
-}
-
 data "cloudfoundry_domain" "internal" {
   name = "apps.internal"
+}
+
+data "hsdp_config" "cf" {
+  region  = var.cf_region
+  service = "cf"
 }
 
 resource "cloudfoundry_app" "loki" {
@@ -26,10 +31,10 @@ resource "cloudfoundry_app" "loki" {
   docker_image = var.loki_image
   environment = merge({
     LOKI_YAML_BASE64 = base64encode(templatefile("${path.module}/templates/loki.yaml", {
-      s3_access_key        = var.s3_credentials.s3_access_key
-      s3_secret_access_key = var.s3_credentials.s3_secret_access_key
-      s3_endpoint          = var.s3_credentials.s3_endpoint
-      s3_bucket            = var.s3_credentials.s3_bucket
+      s3_access_key        = var.s3_credentials.access_key
+      s3_secret_access_key = var.s3_credentials.secret_key
+      s3_endpoint          = var.s3_credentials.endpoint
+      s3_bucket            = var.s3_credentials.bucket
     }))
   }, var.environment)
   command = "/loki/run.sh"
