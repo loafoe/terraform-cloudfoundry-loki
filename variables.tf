@@ -1,7 +1,7 @@
 variable "loki_image" {
   type        = string
   description = "Tempo Docker image to use"
-  default     = "philipslabs/cf-loki:latest"
+  default     = "philipslabs/cf-loki:v0.0.1"
 }
 variable "cf_org" {
   type        = string
