@@ -43,7 +43,7 @@ jobs:
           file: ./docker/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: philipslabs/cf-loki:latest,docker.na1.hsdp.io/philipslabs/cf-thanos:latest
+          tags: philipslabs/cf-loki:latest,docker.na1.hsdp.io/philipslabs/cf-loki:latest
       -
         name: Image digest
         run: echo ${{ steps.docker_build_loki.outputs.digest }}
