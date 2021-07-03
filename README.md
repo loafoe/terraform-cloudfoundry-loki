@@ -5,7 +5,7 @@ Deploys a Grafana Loki instance to Cloud foundry
 
 # Usages
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!--- BEGIN_TF_DOCS --->
 ## Requirements
 
 | Name | Version |
@@ -61,7 +61,7 @@ No Modules.
 |------|-------------|
 | loki\_endpoint | The endpoint where Loki is reachable on |
 | loki\_id | The Loki apps' id |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!--- END_TF_DOCS --->
 
 # Contact / Getting help
 
