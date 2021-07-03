@@ -19,6 +19,7 @@ Deploys a Grafana Loki instance to Cloud foundry
 | Name | Version |
 |------|---------|
 | cloudfoundry | >= 0.14.2 |
+| random | >= 2.2.1 |
 
 ## Modules
 
@@ -33,6 +34,9 @@ No Modules.
 | [cloudfoundry_network_policy](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/network_policy) |
 | [cloudfoundry_route](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/route) |
 | [cloudfoundry_service](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/data-sources/service) |
+| [cloudfoundry_service_instance](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/service_instance) |
+| [cloudfoundry_service_key](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/service_key) |
+| [random_id](https://registry.terraform.io/providers/random/latest/docs/resources/id) |
 
 ## Inputs
 
