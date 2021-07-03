@@ -11,16 +11,14 @@ Deploys a Grafana Loki instance to Cloud foundry
 | Name | Version |
 |------|---------|
 | terraform | >= 0.14.0 |
-| cloudfoundry | >= 0.14.1 |
-| hsdp | >= 0.14.5 |
+| cloudfoundry | >= 0.14.2 |
 | random | >= 2.2.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| cloudfoundry | >= 0.14.1 |
-| hsdp | >= 0.14.5 |
+| cloudfoundry | >= 0.14.2 |
 
 ## Modules
 
@@ -30,25 +28,20 @@ No Modules.
 
 | Name |
 |------|
-| [cloudfoundry_app](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/0.14.1/docs/resources/app) |
-| [cloudfoundry_domain](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/0.14.1/docs/data-sources/domain) |
-| [cloudfoundry_network_policy](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/0.14.1/docs/resources/network_policy) |
-| [cloudfoundry_org](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/0.14.1/docs/data-sources/org) |
-| [cloudfoundry_route](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/0.14.1/docs/resources/route) |
-| [cloudfoundry_service](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/0.14.1/docs/data-sources/service) |
-| [cloudfoundry_space](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/0.14.1/docs/data-sources/space) |
-| [hsdp_config](https://registry.terraform.io/providers/philips-software/hsdp/0.14.5/docs/data-sources/config) |
+| [cloudfoundry_app](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/app) |
+| [cloudfoundry_domain](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/data-sources/domain) |
+| [cloudfoundry_network_policy](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/network_policy) |
+| [cloudfoundry_route](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/route) |
+| [cloudfoundry_service](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/data-sources/service) |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| cf\_org | The CF Org to deploy under | `string` | n/a | yes |
-| cf\_region | The CF region to use for Grafana Loki | `string` | n/a | yes |
-| cf\_space | The CF Space to deploy in | `string` | n/a | yes |
+| cf\_space\_id | The CF Space to deploy in | `string` | n/a | yes |
 | disk | The amount of Disk space to allocate for Grafana Loki (MB) | `number` | `4096` | no |
 | environment | Environment variables for Grafana Loki | `map(any)` | `{}` | no |
-| loki\_image | Tempo Docker image to use | `string` | `"philipslabs/cf-loki:v0.0.2"` | no |
+| loki\_image | Tempo Docker image to use | `string` | `"philipslabs/cf-loki:latest"` | no |
 | memory | The amount of RAM to allocate for Loki (MB) | `number` | `1024` | no |
 | name\_postfix | The postfix string to append to the hostname, prevents namespace clashes | `string` | `""` | no |
 | network\_policies | The container-to-container network policies to create with Grafana as the source app | <pre>list(object({<br>    destination_app = string<br>    protocol        = string<br>    port            = string<br>  }))</pre> | `[]` | no |
@@ -61,6 +54,7 @@ No Modules.
 |------|-------------|
 | loki\_endpoint | The endpoint where Loki is reachable on |
 | loki\_id | The Loki apps' id |
+
 <!--- END_TF_DOCS --->
 
 # Contact / Getting help
