@@ -1,15 +1,3 @@
-data "cloudfoundry_org" "org" {
-  name = var.cf_org
-}
-data "cloudfoundry_space" "space" {
-  org  = data.cloudfoundry_org.org.id
-  name = var.cf_space
-}
-
-data "cloudfoundry_domain" "domain" {
-  name = data.hsdp_config.cf.domain
-}
-
 data "cloudfoundry_service" "s3" {
   name = var.s3_broker_settings.service_broker
 }
@@ -18,14 +6,9 @@ data "cloudfoundry_domain" "internal" {
   name = "apps.internal"
 }
 
-data "hsdp_config" "cf" {
-  region  = var.cf_region
-  service = "cf"
-}
-
 resource "cloudfoundry_app" "loki" {
   name         = "loki"
-  space        = data.cloudfoundry_space.space.id
+  space        = var.cf_space_id
   memory       = var.memory
   disk_quota   = var.disk
   docker_image = var.loki_image
@@ -39,23 +22,15 @@ resource "cloudfoundry_app" "loki" {
   }, var.environment)
   command = "/loki/run.sh"
 
-  routes {
-    route = cloudfoundry_route.loki.id
-  }
+  //noinspection HCLUnknownBlockType
   routes {
     route = cloudfoundry_route.loki_internal.id
   }
 }
 
-resource "cloudfoundry_route" "loki" {
-  domain   = data.cloudfoundry_domain.domain.id
-  space    = data.cloudfoundry_space.space.id
-  hostname = var.name_postfix == "" ? "loki" : "loki-${var.name_postfix}"
-}
-
 resource "cloudfoundry_route" "loki_internal" {
   domain   = data.cloudfoundry_domain.internal.id
-  space    = data.cloudfoundry_space.space.id
+  space    = var.cf_space_id
   hostname = var.name_postfix == "" ? "loki" : "loki-${var.name_postfix}"
 }
 
@@ -64,8 +39,11 @@ resource "cloudfoundry_network_policy" "loki" {
 
   dynamic "policy" {
     for_each = [for p in var.network_policies : {
+      //noinspection HILUnresolvedReference
       destination_app = p.destination_app
+      //noinspection HILUnresolvedReference
       port            = p.port
+      //noinspection HILUnresolvedReference
       protocol        = p.protocol
     }]
     content {

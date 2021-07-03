@@ -3,18 +3,11 @@ variable "loki_image" {
   description = "Tempo Docker image to use"
   default     = "philipslabs/cf-loki:latest"
 }
-variable "cf_org" {
-  type        = string
-  description = "The CF Org to deploy under"
-}
-variable "cf_space" {
+variable "cf_space_id" {
   type        = string
   description = "The CF Space to deploy in"
 }
-variable "cf_region" {
-  type        = string
-  description = "The CF region to use for Grafana Loki"
-}
+
 variable "name_postfix" {
   type        = string
   description = "The postfix string to append to the hostname, prevents namespace clashes"

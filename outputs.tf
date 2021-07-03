@@ -1,6 +1,7 @@
 output "loki_endpoint" {
   description = "The endpoint where Loki is reachable on"
-  value       = cloudfoundry_route.loki.endpoint
+  //noinspection HILUnresolvedReference
+  value       = cloudfoundry_route.loki_internal.endpoint
 }
 
 output "loki_id" {
