@@ -36,16 +36,20 @@ No Modules.
 | [cloudfoundry_service](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/data-sources/service) |
 | [cloudfoundry_service_instance](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/service_instance) |
 | [cloudfoundry_service_key](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/service_key) |
+| [cloudfoundry_user_provided_service](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/user_provided_service) |
 | [random_id](https://registry.terraform.io/providers/random/latest/docs/resources/id) |
+| [random_password](https://registry.terraform.io/providers/random/latest/docs/resources/password) |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| cf\_domain | The CF domain name to use | `string` | n/a | yes |
 | cf\_space\_id | The CF Space to deploy in | `string` | n/a | yes |
 | disk | The amount of Disk space to allocate for Grafana Loki (MB) | `number` | `4096` | no |
 | environment | Environment variables for Grafana Loki | `map(any)` | `{}` | no |
-| loki\_image | Tempo Docker image to use | `string` | `"philipslabs/cf-loki:latest"` | no |
+| loki\_image | Loki Docker image to use | `string` | `"philipslabs/cf-loki:latest"` | no |
+| lokiproxy\_image | lokiproxy Docker image to use | `string` | `"loafoe/lokiproxy:latest"` | no |
 | memory | The amount of RAM to allocate for Loki (MB) | `number` | `1024` | no |
 | name\_postfix | The postfix string to append to the hostname, prevents namespace clashes | `string` | `""` | no |
 | network\_policies | The container-to-container network policies to create with Grafana as the source app | <pre>list(object({<br>    destination_app = string<br>    protocol        = string<br>    port            = string<br>  }))</pre> | `[]` | no |
@@ -56,6 +60,8 @@ No Modules.
 
 | Name | Description |
 |------|-------------|
+| logdrain\_endpoint | The logproxy logdrain endpoint |
+| logdrain\_service\_id | The uuid of the logdrain service. You can bind this to your app to enable logdraining |
 | loki\_endpoint | The endpoint where Loki is reachable on |
 | loki\_id | The Loki apps' id |
 
