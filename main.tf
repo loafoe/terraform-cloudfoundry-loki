@@ -31,10 +31,15 @@ resource "cloudfoundry_app" "loki" {
   docker_image = var.loki_image
   environment = merge({
     LOKI_YAML_BASE64 = base64encode(templatefile("${path.module}/templates/loki.yaml", {
+      //noinspection HILUnresolvedReference
       s3_access_key        = cloudfoundry_service_key.s3.credentials.api_key
+      //noinspection HILUnresolvedReference
       s3_secret_access_key = cloudfoundry_service_key.s3.credentials.secret_key
+      //noinspection HILUnresolvedReference
       s3_endpoint          = cloudfoundry_service_key.s3.credentials.endpoint
+      //noinspection HILUnresolvedReference
       s3_bucket            = cloudfoundry_service_key.s3.credentials.bucket
+      //noinspection HILUnresolvedReference
       apps_internal_host   = cloudfoundry_route.loki_internal.endpoint
     }))
   }, var.environment)
@@ -43,6 +48,14 @@ resource "cloudfoundry_app" "loki" {
   //noinspection HCLUnknownBlockType
   routes {
     route = cloudfoundry_route.loki_internal.id
+  }
+
+  labels = {
+    "variant.tva/exporter" = true,
+  }
+  annotations = {
+    "prometheus.exporter.port" = "3100"
+    "prometheus.exporter.path" = "/metrics"
   }
 }
 
