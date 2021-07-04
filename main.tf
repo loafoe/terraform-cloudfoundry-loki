@@ -6,12 +6,21 @@ resource "random_id" "id" {
   byte_length = 8
 }
 
+resource "random_password" "token" {
+  length  = 32
+  special = false
+}
+
 data "cloudfoundry_service" "s3" {
   name = var.s3_broker_settings.service_broker
 }
 
 data "cloudfoundry_domain" "internal" {
   name = "apps.internal"
+}
+
+data "cloudfoundry_domain" "domain" {
+  name = var.cf_domain
 }
 
 resource "cloudfoundry_app" "loki" {
@@ -22,10 +31,11 @@ resource "cloudfoundry_app" "loki" {
   docker_image = var.loki_image
   environment = merge({
     LOKI_YAML_BASE64 = base64encode(templatefile("${path.module}/templates/loki.yaml", {
-      s3_access_key        = cloudfoundry_service_key.s3.credentials.s3_access_key
-      s3_secret_access_key = cloudfoundry_service_key.s3.credentials.s3_secret_access_key
-      s3_endpoint          = cloudfoundry_service_key.s3.credentials.s3_endpoint
-      s3_bucket            = cloudfoundry_service_key.s3.credentials.s3_bucket
+      s3_access_key        = cloudfoundry_service_key.s3.credentials.api_key
+      s3_secret_access_key = cloudfoundry_service_key.s3.credentials.secret_key
+      s3_endpoint          = cloudfoundry_service_key.s3.credentials.endpoint
+      s3_bucket            = cloudfoundry_service_key.s3.credentials.bucket
+      apps_internal_host   = cloudfoundry_route.loki_internal.endpoint
     }))
   }, var.environment)
   command = "/loki/run.sh"

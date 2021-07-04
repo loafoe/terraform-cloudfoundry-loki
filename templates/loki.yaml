@@ -28,7 +28,7 @@ memberlist:
   # You can use a headless k8s service for all distributor,
   # ingester and querier components.
   join_members:
-    - loki.apps.internal:7946
+    - ${apps_internal_host}:7946
 
   max_join_backoff: 1m
   max_join_retries: 10
@@ -51,8 +51,12 @@ storage_config:
     shared_store: s3
 
   aws:
-    s3: s3://${s3_access_key}:${s3_secret_access_key}@${s3_endpoint}/${s3_bucket}
-    s3forcepathstyle: true
+    bucketnames: ${s3_bucket}
+    endpoint: ${s3_endpoint}
+    access_key_id: ${s3_access_key}
+    secret_access_key: ${s3_secret_access_key}
+    region: us-east-1
+    insecure: false
 
 limits_config:
   enforce_metric_name: false

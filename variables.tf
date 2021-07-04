@@ -1,8 +1,19 @@
 variable "loki_image" {
   type        = string
-  description = "Tempo Docker image to use"
+  description = "Loki Docker image to use"
   default     = "philipslabs/cf-loki:latest"
 }
+variable "lokiproxy_image" {
+  type        = string
+  description = "lokiproxy Docker image to use"
+  default     = "loafoe/lokiproxy:latest"
+}
+
+variable "cf_domain" {
+  type        = string
+  description = "The CF domain name to use"
+}
+
 variable "cf_space_id" {
   type        = string
   description = "The CF Space to deploy in"

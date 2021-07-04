@@ -1,0 +1,14 @@
+client:
+  url: http://${apps_internal_host}:3100/api/prom/push
+
+scrape_configs:
+  - job_name: syslog
+    syslog:
+      listen_address: 0.0.0.0:1514
+      idle_timeout: 60s
+      label_structured_data: yes
+      labels:
+        job: "syslog"
+    relabel_configs:
+      - source_labels: ['__syslog_message_hostname']
+        target_label: 'host'
