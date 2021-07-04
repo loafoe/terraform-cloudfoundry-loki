@@ -3,5 +3,8 @@ terraform {
     cloudfoundry = {
       source = "cloudfoundry-community/cloudfoundry"
     }
+    hsdp = {
+      source = "philips-software/hsdp"
+    }
   }
 }
