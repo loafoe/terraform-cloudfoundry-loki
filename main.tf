@@ -32,15 +32,15 @@ resource "cloudfoundry_app" "loki" {
   environment = merge({
     LOKI_YAML_BASE64 = base64encode(templatefile("${path.module}/templates/loki.yaml", {
       //noinspection HILUnresolvedReference
-      s3_access_key        = cloudfoundry_service_key.s3.credentials.api_key
+      s3_access_key = cloudfoundry_service_key.s3.credentials.api_key
       //noinspection HILUnresolvedReference
       s3_secret_access_key = cloudfoundry_service_key.s3.credentials.secret_key
       //noinspection HILUnresolvedReference
-      s3_endpoint          = cloudfoundry_service_key.s3.credentials.endpoint
+      s3_endpoint = cloudfoundry_service_key.s3.credentials.endpoint
       //noinspection HILUnresolvedReference
-      s3_bucket            = cloudfoundry_service_key.s3.credentials.bucket
+      s3_bucket = cloudfoundry_service_key.s3.credentials.bucket
       //noinspection HILUnresolvedReference
-      apps_internal_host   = cloudfoundry_route.loki_internal.endpoint
+      apps_internal_host = cloudfoundry_route.loki_internal.endpoint
     }))
   }, var.environment)
   command = "/loki/run.sh"
