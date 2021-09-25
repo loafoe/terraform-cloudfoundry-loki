@@ -43,7 +43,7 @@ resource "cloudfoundry_app" "loki" {
       apps_internal_host = cloudfoundry_route.loki_internal.endpoint
     }))
   }, var.environment)
-  command = "/loki/run.sh"
+  command = "echo $LOKI_YAML_BASE64 | base64 -d > /loki/loki.yaml && /usr/bin/loki -config.file=/loki/loki.yaml"
 
   //noinspection HCLUnknownBlockType
   routes {

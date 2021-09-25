@@ -1,7 +1,7 @@
 variable "loki_image" {
   type        = string
   description = "Loki Docker image to use"
-  default     = "philipslabs/cf-loki:latest"
+  default     = "grafana/loki:2.3.0"
 }
 variable "lokiproxy_image" {
   type        = string
@@ -27,7 +27,7 @@ variable "name_postfix" {
 variable "environment" {
   type        = map(any)
   description = "Environment variables for Grafana Loki"
-  default     = {}
+  default     = map({})
 }
 
 variable "s3_broker_settings" {
