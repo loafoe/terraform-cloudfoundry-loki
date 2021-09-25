@@ -27,7 +27,7 @@ variable "name_postfix" {
 variable "environment" {
   type        = map(any)
   description = "Environment variables for Grafana Loki"
-  default     = map({})
+  default     = {}
 }
 
 variable "s3_broker_settings" {
