@@ -6,7 +6,7 @@ variable "loki_image" {
 variable "lokiproxy_image" {
   type        = string
   description = "lokiproxy Docker image to use"
-  default     = "loafoe/lokiproxy:latest"
+  default     = "loafoe/lokiproxy:v0.0.3"
 }
 
 variable "cf_domain" {
