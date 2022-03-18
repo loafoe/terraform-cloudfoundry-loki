@@ -18,8 +18,8 @@ Deploys a Grafana Loki instance to Cloud foundry
 
 | Name | Version |
 |------|---------|
-| <a name="provider_cloudfoundry"></a> [cloudfoundry](#provider\_cloudfoundry) | >= 0.14.2 |
-| <a name="provider_random"></a> [random](#provider\_random) | >= 2.2.1 |
+| <a name="provider_cloudfoundry"></a> [cloudfoundry](#provider\_cloudfoundry) | 0.14.2 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.1.0 |
 
 ## Modules
 
@@ -30,9 +30,12 @@ No modules.
 | Name | Type |
 |------|------|
 | [cloudfoundry_app.loki](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/app) | resource |
+| [cloudfoundry_app.loki_cf_logdrain](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/app) | resource |
 | [cloudfoundry_app.lokiproxy](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/app) | resource |
 | [cloudfoundry_network_policy.loki](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/network_policy) | resource |
+| [cloudfoundry_network_policy.loki_cf_logdrain](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/network_policy) | resource |
 | [cloudfoundry_network_policy.lokiproxy](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/network_policy) | resource |
+| [cloudfoundry_route.loki_cf_logdrain](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/route) | resource |
 | [cloudfoundry_route.loki_internal](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/route) | resource |
 | [cloudfoundry_route.lokiproxy](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/route) | resource |
 | [cloudfoundry_service_instance.s3](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/service_instance) | resource |
