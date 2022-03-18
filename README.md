@@ -31,13 +31,10 @@ No modules.
 |------|------|
 | [cloudfoundry_app.loki](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/app) | resource |
 | [cloudfoundry_app.loki_cf_logdrain](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/app) | resource |
-| [cloudfoundry_app.lokiproxy](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/app) | resource |
 | [cloudfoundry_network_policy.loki](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/network_policy) | resource |
 | [cloudfoundry_network_policy.loki_cf_logdrain](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/network_policy) | resource |
-| [cloudfoundry_network_policy.lokiproxy](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/network_policy) | resource |
 | [cloudfoundry_route.loki_cf_logdrain](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/route) | resource |
 | [cloudfoundry_route.loki_internal](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/route) | resource |
-| [cloudfoundry_route.lokiproxy](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/route) | resource |
 | [cloudfoundry_service_instance.s3](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/service_instance) | resource |
 | [cloudfoundry_service_key.s3](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/service_key) | resource |
 | [cloudfoundry_user_provided_service.logdrain](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/user_provided_service) | resource |
@@ -55,8 +52,8 @@ No modules.
 | <a name="input_cf_space_id"></a> [cf\_space\_id](#input\_cf\_space\_id) | The CF Space to deploy in | `string` | n/a | yes |
 | <a name="input_disk"></a> [disk](#input\_disk) | The amount of Disk space to allocate for Grafana Loki (MB) | `number` | `4096` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment variables for Grafana Loki | `map(any)` | `{}` | no |
+| <a name="input_loki_cf_logdrain_image"></a> [loki\_cf\_logdrain\_image](#input\_loki\_cf\_logdrain\_image) | loki-cf-logdrain Docker image to use | `string` | `"loafoe/loki-cf-logdrain:v0.1.0"` | no |
 | <a name="input_loki_image"></a> [loki\_image](#input\_loki\_image) | Loki Docker image to use | `string` | `"grafana/loki:2.3.0"` | no |
-| <a name="input_lokiproxy_image"></a> [lokiproxy\_image](#input\_lokiproxy\_image) | lokiproxy Docker image to use | `string` | `"loafoe/lokiproxy:v0.0.3"` | no |
 | <a name="input_memory"></a> [memory](#input\_memory) | The amount of RAM to allocate for Loki (MB) | `number` | `1024` | no |
 | <a name="input_name_postfix"></a> [name\_postfix](#input\_name\_postfix) | The postfix string to append to the hostname, prevents namespace clashes | `string` | `""` | no |
 | <a name="input_network_policies"></a> [network\_policies](#input\_network\_policies) | The container-to-container network policies to create with Grafana as the source app | <pre>list(object({<br>    destination_app = string<br>    protocol        = string<br>    port            = string<br>  }))</pre> | `[]` | no |
