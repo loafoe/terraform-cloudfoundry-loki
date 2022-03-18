@@ -11,7 +11,7 @@ output "loki_id" {
 
 output "logdrain_endpoint" {
   description = "The logproxy logdrain endpoint"
-  value       = "https://${cloudfoundry_route.lokiproxy.endpoint}/syslog/drain/${random_password.token.result}"
+  value       = "https://${cloudfoundry_route.loki_cf_logdrain.endpoint}/syslog/drain/${random_password.token.result}"
   sensitive   = true
 }
 

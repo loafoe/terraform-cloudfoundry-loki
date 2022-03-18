@@ -3,10 +3,10 @@ variable "loki_image" {
   description = "Loki Docker image to use"
   default     = "grafana/loki:2.3.0"
 }
-variable "lokiproxy_image" {
+variable "loki_cf_logdrain_image" {
   type        = string
-  description = "lokiproxy Docker image to use"
-  default     = "loafoe/lokiproxy:v0.0.3"
+  description = "loki-cf-logdrain Docker image to use"
+  default     = "loafoe/loki-cf-logdrain:v0.1.0"
 }
 
 variable "cf_domain" {
