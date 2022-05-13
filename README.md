@@ -97,6 +97,7 @@ Please post your questions on the HSDP Slack `#terraform` channel
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_logdrain"></a> [logdrain](#module\_logdrain) | ./modules/logdrain | n/a |
 | <a name="module_proxy"></a> [proxy](#module\_proxy) | ./modules/proxy | n/a |
 
 ## Resources
@@ -104,14 +105,10 @@ Please post your questions on the HSDP Slack `#terraform` channel
 | Name | Type |
 |------|------|
 | [cloudfoundry_app.loki](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/app) | resource |
-| [cloudfoundry_app.loki_cf_logdrain](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/app) | resource |
 | [cloudfoundry_network_policy.loki](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/network_policy) | resource |
-| [cloudfoundry_network_policy.loki_cf_logdrain](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/network_policy) | resource |
-| [cloudfoundry_route.loki_cf_logdrain](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/route) | resource |
 | [cloudfoundry_route.loki_internal](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/route) | resource |
 | [cloudfoundry_service_instance.s3](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/service_instance) | resource |
 | [cloudfoundry_service_key.s3](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/service_key) | resource |
-| [cloudfoundry_user_provided_service.logdrain](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/user_provided_service) | resource |
 | [random_id.id](https://registry.terraform.io/providers/random/latest/docs/resources/id) | resource |
 | [random_password.token](https://registry.terraform.io/providers/random/latest/docs/resources/password) | resource |
 | [cloudfoundry_domain.domain](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/data-sources/domain) | data source |
@@ -128,6 +125,7 @@ Please post your questions on the HSDP Slack `#terraform` channel
 | <a name="input_disk"></a> [disk](#input\_disk) | The amount of Disk space to allocate for Grafana Loki (MB) | `number` | `4096` | no |
 | <a name="input_docker_password"></a> [docker\_password](#input\_docker\_password) | Docker registry password | `string` | `""` | no |
 | <a name="input_docker_username"></a> [docker\_username](#input\_docker\_username) | Docker registry username | `string` | `""` | no |
+| <a name="input_enable_cf_logdrain"></a> [enable\_cf\_logdrain](#input\_enable\_cf\_logdrain) | Enables creation of a Cloud foundry logdrain service | `bool` | `false` | no |
 | <a name="input_enable_public_proxy"></a> [enable\_public\_proxy](#input\_enable\_public\_proxy) | Enables an authenticated public proxy endpoint | `bool` | `false` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment variables for Grafana Loki | `map(any)` | `{}` | no |
 | <a name="input_loki_cf_logdrain_image"></a> [loki\_cf\_logdrain\_image](#input\_loki\_cf\_logdrain\_image) | loki-cf-logdrain Docker image to use | `string` | `"loafoe/loki-cf-logdrain:v0.1.0"` | no |
