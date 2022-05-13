@@ -94,5 +94,5 @@ variable "docker_password" {
 variable "caddy_image" {
   type        = string
   description = "Caddy server image to use"
-  default     = "caddy:2.4.5"
+  default     = "library/caddy:2.4.5"
 }

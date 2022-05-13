@@ -1,5 +1,5 @@
 resource "cloudfoundry_app" "loki_cf_logdrain" {
-  name         = "tf-loki_cf_logdrain-${local.postfix}"
+  name         = "tf-loki-logdrain-${local.postfix}"
   space        = var.cf_space_id
   memory       = var.memory
   disk_quota   = var.disk
@@ -20,7 +20,7 @@ resource "cloudfoundry_app" "loki_cf_logdrain" {
 resource "cloudfoundry_route" "loki_cf_logdrain" {
   domain   = data.cloudfoundry_domain.domain.id
   space    = var.cf_space_id
-  hostname = "tf-loki_cf_logdrain-${local.postfix}"
+  hostname = "tf-loki-logdrain-${local.postfix}"
 }
 
 resource "cloudfoundry_network_policy" "loki_cf_logdrain" {
@@ -34,7 +34,7 @@ resource "cloudfoundry_network_policy" "loki_cf_logdrain" {
 }
 
 resource "cloudfoundry_user_provided_service" "logdrain" {
-  name  = "tf-loki_cf_logdrain-${local.postfix}"
+  name  = "tf-loki-logdrain-${local.postfix}"
   space = var.cf_space_id
   //noinspection HILUnresolvedReference
   syslog_drain_url = "https://${cloudfoundry_route.loki_cf_logdrain.endpoint}/syslog/drain/${random_password.token.result}"
