@@ -36,6 +36,11 @@ variable "enable_public_proxy" {
   default     = false
 }
 
+variable "enable_cf_logdrain" {
+  type        = bool
+  description = "Enables creation of a Cloud foundry logdrain service"
+  default     = false
+}
 
 variable "s3_broker_settings" {
   type = object({

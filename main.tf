@@ -35,6 +35,18 @@ module "proxy" {
   cf_space_id            = var.cf_space_id
 }
 
+module "logdrain" {
+  count  = var.enable_cf_logdrain ? 1 : 0
+  source = "./modules/logdrain"
+
+  loki_app_id            = cloudfoundry_app.loki.id
+  loki_internal_endpoint = cloudfoundry_route.loki_internal.endpoint
+  name_postfix         = local.postfix
+  cf_domain            = var.cf_domain
+  cf_space_id          = var.cf_space_id
+  loki_cf_logdrain_image = var.loki_cf_logdrain_image
+}
+
 
 resource "cloudfoundry_app" "loki" {
   name         = "tf-loki-${local.postfix}"
