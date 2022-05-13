@@ -4,9 +4,15 @@ output "loki_endpoint" {
   value = cloudfoundry_route.loki_internal.endpoint
 }
 
-output "loki_id" {
-  description = "The Loki apps' id"
+output "loki_app_id" {
+  description = "The Loki app id"
   value       = cloudfoundry_app.loki.id
+}
+
+output "loki_proxy_password" {
+  description = "The Loki proxy password. Username is always 'loki'"
+  value       = random_password.proxy_password.result
+  sensitive   = true
 }
 
 output "logdrain_endpoint" {

@@ -78,3 +78,21 @@ variable "disk" {
   description = "The amount of Disk space to allocate for Grafana Loki (MB)"
   default     = 4096
 }
+
+variable "docker_username" {
+  type        = string
+  description = "Docker registry username"
+  default     = ""
+}
+
+variable "docker_password" {
+  type        = string
+  description = "Docker registry password"
+  default     = ""
+}
+
+variable "caddy_image" {
+  type        = string
+  description = "Caddy server image to use"
+  default     = "caddy:2.4.5"
+}
