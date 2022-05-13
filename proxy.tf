@@ -3,8 +3,14 @@ resource "random_password" "proxy_password" {
   special = false
 }
 
+resource "random_password" "proxy_password_salt" {
+  length = 8
+}
+
+
 resource "htpasswd_password" "hash" {
   password = random_password.proxy_password.result
+  salt     = random_password.proxy_password_salt.result
 }
 
 resource "cloudfoundry_app" "loki_proxy" {
