@@ -23,6 +23,19 @@ data "cloudfoundry_domain" "domain" {
   name = var.cf_domain
 }
 
+module "proxy" {
+  count  = var.enable_public_proxy ? 1 : 0
+  source = "./modules/proxy"
+
+
+  loki_app_id            = cloudfoundry_app.loki.id
+  loki_internal_endpoint = cloudfoundry_route.loki_internal.endpoint
+  name_postfix           = local.postfix
+  cf_domain              = var.cf_domain
+  cf_space_id            = var.cf_space_id
+}
+
+
 resource "cloudfoundry_app" "loki" {
   name         = "tf-loki-${local.postfix}"
   space        = var.cf_space_id

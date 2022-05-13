@@ -30,6 +30,13 @@ variable "environment" {
   default     = {}
 }
 
+variable "enable_public_proxy" {
+  type        = bool
+  description = "Enables an authenticated public proxy endpoint"
+  default     = false
+}
+
+
 variable "s3_broker_settings" {
   type = object({
     service_broker = string

@@ -14,7 +14,7 @@ resource "htpasswd_password" "hash" {
 }
 
 resource "cloudfoundry_app" "loki_proxy" {
-  name         = "tf-loki-proxy-${local.postfix}"
+  name         = "tf-loki-proxy-${var.name_postfix}"
   space        = var.cf_space_id
   memory       = 128
   disk_quota   = 512
@@ -26,7 +26,7 @@ resource "cloudfoundry_app" "loki_proxy" {
 
   environment = merge({
     CADDYFILE_BASE64 = base64encode(templatefile("${path.module}/templates/Caddyfile", {
-      upstream_url = "http://${cloudfoundry_route.loki_internal.endpoint}:3100"
+      upstream_url = "http://${var.loki_internal_endpoint}:3100"
       username     = "loki"
       password     = base64encode(htpasswd_password.hash.bcrypt)
     }))
@@ -44,14 +44,14 @@ resource "cloudfoundry_app" "loki_proxy" {
 resource "cloudfoundry_route" "loki_proxy" {
   domain   = data.cloudfoundry_domain.domain.id
   space    = var.cf_space_id
-  hostname = "tf-loki-${local.postfix}"
+  hostname = "tf-loki-${var.name_postfix}"
 }
 
 resource "cloudfoundry_network_policy" "loki_proxy" {
 
   policy {
     source_app      = cloudfoundry_app.loki_proxy.id
-    destination_app = cloudfoundry_app.loki.id
+    destination_app = var.loki_app_id
     protocol        = "tcp"
     port            = "3100"
   }
