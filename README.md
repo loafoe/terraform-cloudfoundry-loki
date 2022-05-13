@@ -1,9 +1,7 @@
-<img src="https://cdn.rawgit.com/hashicorp/terraform-website/master/content/source/assets/images/logo-hashicorp.svg" width="500px">
-
 # terraform-cloudfoundry-loki
 Deploys a Grafana Loki instance to Cloud foundry
 
-# Usages
+## Usages
 
 <!--- BEGIN_TF_DOCS --->
 ## Requirements
