@@ -119,6 +119,7 @@ No modules.
 | [htpasswd_password.hash](https://registry.terraform.io/providers/loafoe/htpasswd/latest/docs/resources/password) | resource |
 | [random_id.id](https://registry.terraform.io/providers/random/latest/docs/resources/id) | resource |
 | [random_password.proxy_password](https://registry.terraform.io/providers/random/latest/docs/resources/password) | resource |
+| [random_password.proxy_password_salt](https://registry.terraform.io/providers/random/latest/docs/resources/password) | resource |
 | [random_password.token](https://registry.terraform.io/providers/random/latest/docs/resources/password) | resource |
 | [cloudfoundry_domain.domain](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/data-sources/domain) | data source |
 | [cloudfoundry_domain.internal](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/data-sources/domain) | data source |
@@ -128,7 +129,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_caddy_image"></a> [caddy\_image](#input\_caddy\_image) | Caddy server image to use | `string` | `"caddy:2.4.5"` | no |
+| <a name="input_caddy_image"></a> [caddy\_image](#input\_caddy\_image) | Caddy server image to use | `string` | `"library/caddy:2.4.5"` | no |
 | <a name="input_cf_domain"></a> [cf\_domain](#input\_cf\_domain) | The CF domain name to use | `string` | n/a | yes |
 | <a name="input_cf_space_id"></a> [cf\_space\_id](#input\_cf\_space\_id) | The CF Space to deploy in | `string` | n/a | yes |
 | <a name="input_disk"></a> [disk](#input\_disk) | The amount of Disk space to allocate for Grafana Loki (MB) | `number` | `4096` | no |
