@@ -41,9 +41,9 @@ module "logdrain" {
 
   loki_app_id            = cloudfoundry_app.loki.id
   loki_internal_endpoint = cloudfoundry_route.loki_internal.endpoint
-  name_postfix         = local.postfix
-  cf_domain            = var.cf_domain
-  cf_space_id          = var.cf_space_id
+  name_postfix           = local.postfix
+  cf_domain              = var.cf_domain
+  cf_space_id            = var.cf_space_id
   loki_cf_logdrain_image = var.loki_cf_logdrain_image
 }
 
