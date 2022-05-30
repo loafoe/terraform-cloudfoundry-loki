@@ -9,19 +9,19 @@ output "loki_app_id" {
   value       = cloudfoundry_app.loki.id
 }
 
-output "loki_public_proxy_password" {
+output "loki_proxy_password" {
   description = "The Loki proxy password. Username is always 'loki'"
   value       = module.proxy.*.proxy_password
   sensitive   = true
 }
 
-output "loki_public_proxy_username" {
+output "loki_proxy_username" {
   description = "The Loki proxy password. Username is always 'loki'"
   value       = module.proxy.*.proxy_username
   sensitive   = true
 }
 
-output "loki_public_proxy_endpoint" {
+output "loki_proxy_endpoint" {
   description = "The Loki proxy endpoint"
   value       = module.proxy.*.proxy_endpoint
 }
