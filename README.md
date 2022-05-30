@@ -76,6 +76,7 @@ Please post your questions on the HSDP Slack `#terraform` channel
 | <a name="output_logdrain_service_id"></a> [logdrain\_service\_id](#output\_logdrain\_service\_id) | The uuid of the logdrain service. You can bind this to your app to enable logdraining |
 | <a name="output_loki_app_id"></a> [loki\_app\_id](#output\_loki\_app\_id) | The Loki app id |
 | <a name="output_loki_endpoint"></a> [loki\_endpoint](#output\_loki\_endpoint) | The endpoint where Loki is reachable on |
+| <a name="output_loki_public_proxy_endpoint"></a> [loki\_public\_proxy\_endpoint](#output\_loki\_public\_proxy\_endpoint) | The Loki proxy endpoint |
 | <a name="output_loki_public_proxy_password"></a> [loki\_public\_proxy\_password](#output\_loki\_public\_proxy\_password) | The Loki proxy password. Username is always 'loki' |
 | <a name="output_loki_public_proxy_username"></a> [loki\_public\_proxy\_username](#output\_loki\_public\_proxy\_username) | The Loki proxy password. Username is always 'loki' |
 <!-- END_TF_DOCS -->
