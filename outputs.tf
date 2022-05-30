@@ -21,6 +21,10 @@ output "loki_public_proxy_username" {
   sensitive   = true
 }
 
+output "loki_public_proxy_endpoint" {
+  description = "The Loki proxy endpoint"
+  value       = module.proxy.*.proxy_endpoint
+}
 
 output "logdrain_endpoint" {
   description = "The logproxy logdrain endpoint"
