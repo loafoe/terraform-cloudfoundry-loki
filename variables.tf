@@ -1,7 +1,7 @@
 variable "loki_image" {
   type        = string
   description = "Loki Docker image to use"
-  default     = "grafana/loki:2.3.0"
+  default     = "grafana/loki:2.6.1"
 }
 variable "loki_cf_logdrain_image" {
   type        = string
@@ -106,5 +106,5 @@ variable "docker_password" {
 variable "caddy_image" {
   type        = string
   description = "Caddy server image to use"
-  default     = "library/caddy:2.4.5"
+  default     = "caddy/caddy:2.6.1"
 }
