@@ -17,6 +17,8 @@ ingester:
     final_sleep: 0s
   chunk_idle_period: 5m
   chunk_retain_period: 30s
+  wal:
+    dir: /tmp/wal
 
 memberlist:
   abort_if_cluster_join_fails: false
@@ -67,3 +69,4 @@ compactor:
   working_directory: /tmp/compactor
   shared_store: s3
   compaction_interval: 5m
+ 
