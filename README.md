@@ -51,7 +51,7 @@ Please post your questions on the HSDP Slack `#terraform` channel
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_caddy_image"></a> [caddy\_image](#input\_caddy\_image) | Caddy server image to use | `string` | `"library/caddy:2.4.5"` | no |
+| <a name="input_caddy_image"></a> [caddy\_image](#input\_caddy\_image) | Caddy server image to use | `string` | `"caddy/caddy:2.6.1"` | no |
 | <a name="input_cf_domain"></a> [cf\_domain](#input\_cf\_domain) | The CF domain name to use | `string` | n/a | yes |
 | <a name="input_cf_space_id"></a> [cf\_space\_id](#input\_cf\_space\_id) | The CF Space to deploy in | `string` | n/a | yes |
 | <a name="input_disk"></a> [disk](#input\_disk) | The amount of Disk space to allocate for Grafana Loki (MB) | `number` | `4096` | no |
@@ -61,7 +61,7 @@ Please post your questions on the HSDP Slack `#terraform` channel
 | <a name="input_enable_public_proxy"></a> [enable\_public\_proxy](#input\_enable\_public\_proxy) | Enables an authenticated public proxy endpoint | `bool` | `false` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment variables for Grafana Loki | `map(any)` | `{}` | no |
 | <a name="input_loki_cf_logdrain_image"></a> [loki\_cf\_logdrain\_image](#input\_loki\_cf\_logdrain\_image) | loki-cf-logdrain Docker image to use | `string` | `"loafoe/loki-cf-logdrain:v0.1.0"` | no |
-| <a name="input_loki_image"></a> [loki\_image](#input\_loki\_image) | Loki Docker image to use | `string` | `"grafana/loki:2.3.0"` | no |
+| <a name="input_loki_image"></a> [loki\_image](#input\_loki\_image) | Loki Docker image to use | `string` | `"grafana/loki:2.6.1"` | no |
 | <a name="input_memory"></a> [memory](#input\_memory) | The amount of RAM to allocate for Loki (MB) | `number` | `1024` | no |
 | <a name="input_name_postfix"></a> [name\_postfix](#input\_name\_postfix) | The postfix string to append to the hostname, prevents namespace clashes | `string` | `""` | no |
 | <a name="input_network_policies"></a> [network\_policies](#input\_network\_policies) | The container-to-container network policies to create with Grafana as the source app | <pre>list(object({<br>    destination_app = string<br>    protocol        = string<br>    port            = string<br>  }))</pre> | `[]` | no |
