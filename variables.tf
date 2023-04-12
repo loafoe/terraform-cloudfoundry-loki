@@ -1,12 +1,12 @@
 variable "loki_image" {
   type        = string
   description = "Loki Docker image to use"
-  default     = "grafana/loki:2.6.1"
+  default     = "grafana/loki:2.8.0"
 }
 variable "loki_cf_logdrain_image" {
   type        = string
   description = "loki-cf-logdrain Docker image to use"
-  default     = "loafoe/loki-cf-logdrain:v0.1.0"
+  default     = "ghcr.io/philips-software/loki-cf-logdrain:v0.5.6"
 }
 
 variable "cf_domain" {
