@@ -66,6 +66,8 @@ resource "cloudfoundry_app" "loki" {
       s3_bucket = cloudfoundry_service_key.s3.credentials.bucket
       //noinspection HILUnresolvedReference
       apps_internal_host = cloudfoundry_route.loki_internal.endpoint
+      //noinspection HILUnresolvedReference
+      max_query_series = var.max_query_series
     }))
   }, var.environment)
   command = "echo $LOKI_YAML_BASE64 | base64 -d > /loki/loki.yaml && /usr/bin/loki -config.file=/loki/loki.yaml"

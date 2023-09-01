@@ -108,3 +108,9 @@ variable "caddy_image" {
   description = "Caddy server image to use"
   default     = "caddy/caddy:2.6.1"
 }
+
+variable "max_query_series" {
+  type        = number
+  description = "Maximum query series"
+  default     = 500
+}
