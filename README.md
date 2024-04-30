@@ -22,8 +22,8 @@ Please post your questions on the HSDP Slack `#terraform` channel
 
 | Name | Version |
 |------|---------|
-| <a name="provider_cloudfoundry"></a> [cloudfoundry](#provider\_cloudfoundry) | 0.51.3 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.5.1 |
+| <a name="provider_cloudfoundry"></a> [cloudfoundry](#provider\_cloudfoundry) | 0.53.1 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.6.1 |
 
 ## Modules
 
